@@ -3,26 +3,26 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<meta name="theme-color" content="#4e121c">
-<title>Nurhidayah & Wan Irsyaduddin</title>
-<meta name="description" content="Majlis Kesyukuran Sempena Perkahwinan Nurhidayah & Wan Irsyaduddin · Sabtu, 12 Disember 2026 · Wakaf Bharu, Kelantan">
-<meta property="og:title" content="Nurhidayah & Wan Irsyaduddin · 12.12.2026">
+<meta name="theme-color" content="#1b2e58">
+<title>Wan Irsyaduddin & Nurhidayah</title>
+<meta name="description" content="Majlis Kesyukuran Sempena Perkahwinan Wan Irsyaduddin & Nurhidayah · Ahad, 13 Disember 2026 · Omah Kasmini, Pasir Puteh, Kelantan">
+<meta property="og:title" content="Wan Irsyaduddin & Nurhidayah · 13.12.2026">
 <meta property="og:description" content="Dengan penuh rasa syukur, kami menjemput anda ke Majlis Kesyukuran sempena perkahwinan kami.">
-<meta property="og:image" content="bg1.jpg">
+<meta property="og:image" content="assets/kad-1.jpg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Great+Vibes&family=Ibarra+Real+Nova&family=Source+Serif+4:wght@400;700&display=swap" rel="stylesheet">
 <link rel="preload" href="assets/monogram.webp" as="image">
 <style>
   :root {
-    --wine: #4e121c;
-    --wine-2: #5c1724;
-    --ink: #62232f;
-    --ivory: #f6f1ea;
-    --paper: #efe7dd;
-    --blush: #ecd3d1;
-    --rose: #c58f95;
-    --line: rgba(98, 35, 47, .22);
+    --navy: #1b2e58;
+    --navy-2: #22396b;
+    --ink: #1d3160;
+    --ivory: #f5f4f0;
+    --paper: #e8e8e2;
+    --blush: #dbe3f1;
+    --aksen: #6a80ae;
+    --line: rgba(29, 49, 96, .2);
     --serif: 'Cormorant Garamond', 'Ibarra Real Nova', serif;
     --script: 'Great Vibes', cursive;
     --body: 'Source Serif 4', Georgia, serif;
@@ -32,7 +32,7 @@
   * { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
   html { scroll-behavior: smooth; }
   body {
-    background: #2c0a11; color: var(--ink); font-family: var(--body);
+    background: #0d1630; color: var(--ink); font-family: var(--body);
     font-size: 15px; line-height: 1.6; -webkit-font-smoothing: antialiased;
     font-variant-numeric: lining-nums;
     overflow-x: hidden;
@@ -45,7 +45,7 @@
   /* ---------- Bekas utama (mobile first) ---------- */
   .app { position: relative; max-width: 480px; margin: 0 auto; background: var(--ivory); overflow: hidden; }
   @media (min-width: 520px) {
-    body { background: radial-gradient(circle at 50% 30%, #5c1724, #2c0a11 70%) fixed; }
+    body { background: radial-gradient(circle at 50% 30%, #22396b, #0d1630 70%) fixed; }
     .app { box-shadow: 0 0 60px rgba(0, 0, 0, .5); }
   }
 
@@ -53,7 +53,7 @@
   .cover { position: fixed; inset: 0; z-index: 50; display: grid; place-items: center; pointer-events: auto; }
   .cover .pintu {
     position: absolute; top: 0; bottom: 0; width: 50.5%;
-    background: var(--wine-2) url(assets/latar-merah.jpg) center / cover no-repeat;
+    background: var(--navy-2) url(assets/latar-biru.jpg) center / cover no-repeat;
     transition: transform 1.6s var(--ease) .35s;
   }
   .cover .pintu.kiri { left: 0; background-position: left center; box-shadow: inset -10px 0 30px rgba(0,0,0,.35); }
@@ -64,7 +64,7 @@
   }
   .cover .isi {
     position: relative; z-index: 2; width: min(100%, 480px); padding: 24px 22px calc(28px + env(safe-area-inset-bottom));
-    display: flex; flex-direction: column; align-items: center; text-align: center; color: #fbeeee;
+    display: flex; flex-direction: column; align-items: center; text-align: center; color: #f1f4fb;
     transition: opacity .7s ease, transform .9s var(--ease);
   }
   .cover .kecil { font-family: var(--serif); letter-spacing: .35em; text-indent: .35em; font-size: 12px; text-transform: uppercase; opacity: .85; }
@@ -82,7 +82,7 @@
   .btn-buka {
     margin-top: 20px; display: inline-flex; align-items: center; gap: 10px; cursor: pointer;
     padding: 13px 28px; border-radius: 999px; border: 1px solid rgba(255,255,255,.55);
-    background: linear-gradient(180deg, #f8ece6, #ead2cc); color: var(--wine);
+    background: linear-gradient(180deg, #f7f8fc, #d9e1f0); color: var(--navy);
     font-family: var(--serif); font-weight: 600; font-size: 16px; letter-spacing: .14em; text-transform: uppercase;
     box-shadow: 0 10px 26px rgba(0,0,0,.35); position: relative;
     animation: denyut 2.4s ease-in-out infinite;
@@ -99,11 +99,11 @@
 
   /* ---------- Seksyen ---------- */
   section.s { position: relative; padding: 72px 26px; text-align: center; overflow: hidden; }
-  .s.gelap { background: radial-gradient(120% 80% at 50% 0%, #66202d 0%, var(--wine) 70%); color: #f7e9e8; }
-  .s.terang { background: radial-gradient(120% 70% at 50% 50%, #fbf8f3 0%, var(--ivory) 55%, var(--paper) 100%); }
+  .s.gelap { background: radial-gradient(120% 80% at 50% 0%, #2a4479 0%, var(--navy) 70%); color: #eef2fa; }
+  .s.terang { background: radial-gradient(120% 70% at 50% 50%, #fcfcfa 0%, var(--ivory) 55%, var(--paper) 100%); }
   .label { font-family: var(--serif); font-size: 12px; letter-spacing: .4em; text-indent: .4em; text-transform: uppercase; opacity: .8; }
   .tajuk { font-family: var(--script); font-weight: 400; font-size: 44px; line-height: 1.15; margin: 4px 0 18px; }
-  .s.gelap .tajuk { color: #fff2f0; }
+  .s.gelap .tajuk { color: #ffffff; }
   .pemisah { display: flex; align-items: center; justify-content: center; gap: 10px; margin: 18px auto; width: 78%; color: currentColor; opacity: .75; }
   .pemisah::before, .pemisah::after { content: ''; flex: 1; height: 1px; background: currentColor; opacity: .55; }
   .pemisah svg { width: 18px; height: 18px; }
@@ -122,13 +122,13 @@
   .hero .b2 { top: -8px; right: -14px; width: 38%; transform-origin: 100% 0; animation-delay: -2s; }
   .hero .b3 { bottom: -6px; right: -10px; width: 26%; transform-origin: 100% 100%; animation-delay: -4s; }
   .hero .b4 { bottom: -6px; left: -12px; width: 50%; transform-origin: 0 100%; animation-delay: -1s; }
-  .monogram { width: 150px; margin: 14px auto 6px; filter: drop-shadow(0 6px 10px rgba(98,35,47,.15)); }
+  .monogram { width: 150px; margin: 14px auto 6px; filter: drop-shadow(0 6px 10px rgba(29,49,96,.15)); }
   .hero .walimah { font-family: var(--serif); font-size: 13px; letter-spacing: .32em; text-indent: .32em; text-transform: uppercase; line-height: 1.7; }
   .hero .nama { white-space: nowrap; font-family: var(--script); font-size: clamp(38px, 11.2vw, 52px); line-height: 1.05; color: var(--ink); }
-  .hero .dan { font-family: var(--script); font-size: 34px; color: var(--rose); line-height: 1.1; }
+  .hero .dan { font-family: var(--script); font-size: 34px; color: var(--aksen); line-height: 1.1; }
   .hero .tarikh { margin-top: 18px; font-family: var(--serif); font-size: 18px; letter-spacing: .2em; font-weight: 600; font-variant-numeric: lining-nums; }
   .hero .tempat { font-family: var(--serif); font-size: 14px; letter-spacing: .14em; text-transform: uppercase; opacity: .8; }
-  .hero .hashtag { margin-top: 14px; font-family: 'Ibarra Real Nova', serif; letter-spacing: .1em; font-size: 13px; color: var(--rose); }
+  .hero .hashtag { margin-top: 14px; font-family: 'Ibarra Real Nova', serif; letter-spacing: .1em; font-size: 13px; color: var(--aksen); }
   .tulis { clip-path: inset(0 100% 0 0); }
   .mula .tulis { animation: tulis 1.8s var(--ease) forwards; animation-delay: var(--d, 0s); }
   @keyframes tulis { to { clip-path: inset(0 -10% 0 0); } }
@@ -144,7 +144,7 @@
   .r.nampak { opacity: 1; transform: none; filter: none; }
 
   /* ---------- Ayat ---------- */
-  .arab { font-family: 'Amiri', serif; font-size: 23px; line-height: 2.1; direction: rtl; color: #fff3f1; }
+  .arab { font-family: 'Amiri', serif; font-size: 23px; line-height: 2.1; direction: rtl; color: #f4f6fc; }
   .terjemahan { font-family: var(--serif); font-style: italic; font-size: 16px; line-height: 1.65; margin-top: 14px; opacity: .92; }
   .rujukan { margin-top: 10px; font-family: var(--serif); letter-spacing: .2em; font-size: 12px; text-transform: uppercase; opacity: .7; }
 
@@ -153,7 +153,7 @@
   .jemputan p { font-family: var(--serif); font-size: 17px; line-height: 1.6; }
   .jemputan .ibubapa { font-family: var(--body); font-weight: 700; font-size: 14px; letter-spacing: .08em; line-height: 1.9; margin: 14px 0; }
   .jemputan .pengantin { font-family: var(--script); font-size: 31px; line-height: 1.25; margin: 10px 0; color: var(--ink); }
-  .jemputan .pengantin small { display: block; font-size: 26px; color: var(--rose); }
+  .jemputan .pengantin small { display: block; font-size: 26px; color: var(--aksen); }
   .jemputan .turut { margin-top: 22px; font-size: 15px; opacity: .85; }
 
   /* ---------- Butiran & kiraan detik ---------- */
@@ -172,8 +172,8 @@
   .butang { display: inline-flex; align-items: center; justify-content: center; gap: 8px; padding: 11px 18px; border-radius: 999px; font-family: var(--serif); font-weight: 600; font-size: 15px; letter-spacing: .06em; text-decoration: none; cursor: pointer; border: 1px solid currentColor; background: transparent; transition: transform .2s, background .3s, color .3s; }
   .butang:active { transform: scale(.96); }
   .butang svg { width: 18px; height: 18px; flex: none; }
-  .s.gelap .butang { color: #fbeeee; }
-  .s.gelap .butang.isi { background: #f6e3df; color: var(--wine); border-color: #f6e3df; }
+  .s.gelap .butang { color: #f1f4fb; }
+  .s.gelap .butang.isi { background: #e6ecf7; color: var(--navy); border-color: #e6ecf7; }
   .s.terang .butang { color: var(--ink); }
   .s.terang .butang.isi { background: var(--ink); color: #fff; border-color: var(--ink); }
   .baris-butang { display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; margin-top: 18px; }
@@ -182,7 +182,7 @@
   .garis-masa { position: relative; max-width: 320px; margin: 8px auto 0; text-align: left; }
   .garis-masa::before { content: ''; position: absolute; left: 76px; top: 8px; bottom: 8px; width: 1px; background: var(--line); }
   .acara { position: relative; display: grid; grid-template-columns: 64px 1fr; gap: 24px; padding: 12px 0; }
-  .acara::before { content: ''; position: absolute; left: 72px; top: 20px; width: 9px; height: 9px; border-radius: 50%; background: var(--ivory); border: 1.5px solid var(--rose); }
+  .acara::before { content: ''; position: absolute; left: 72px; top: 20px; width: 9px; height: 9px; border-radius: 50%; background: var(--ivory); border: 1.5px solid var(--aksen); }
   .acara time { font-family: var(--serif); font-weight: 600; font-size: 17px; text-align: right; font-variant-numeric: lining-nums; line-height: 1.3; }
   .acara time small { display: block; font-size: 11px; font-weight: 500; letter-spacing: .12em; text-transform: uppercase; opacity: .7; }
   .acara p { font-family: var(--serif); font-size: 17px; line-height: 1.35; padding-top: 1px; }
@@ -195,37 +195,13 @@
   .gelongsor { display: flex; gap: 14px; overflow-x: auto; scroll-snap-type: x mandatory; padding: 4px 26px 12px; margin: 0 -26px; scrollbar-width: none; }
   .gelongsor::-webkit-scrollbar { display: none; }
   .titik { display: flex; justify-content: center; gap: 6px; margin-top: 6px; }
-  .titik i { width: 6px; height: 6px; border-radius: 50%; background: var(--rose); opacity: .35; transition: opacity .3s, width .3s; }
+  .titik i { width: 6px; height: 6px; border-radius: 50%; background: var(--aksen); opacity: .35; transition: opacity .3s, width .3s; }
   .titik i.aktif { opacity: 1; width: 18px; border-radius: 3px; }
 
-  /* Semua ukuran ikut kad asal (289.5 x 405 pt). top = pt/405, font = pt/2.895 cqw */
   .card {
-    position: relative; flex: 0 0 86%; scroll-snap-align: center; border-radius: 6px; overflow: hidden;
-    aspect-ratio: 289.5 / 405; container-type: inline-size; box-shadow: 0 12px 28px rgba(60, 10, 20, .25);
-    background: center / cover no-repeat; text-align: left;
+    flex: 0 0 86%; scroll-snap-align: center; border-radius: 6px; width: 86%;
+    aspect-ratio: 289.5 / 405; object-fit: cover; box-shadow: 0 12px 28px rgba(13, 22, 48, .25);
   }
-  .card .t { position: absolute; left: 0; right: 0; text-align: center; line-height: 1.17; }
-  .card a { text-decoration: none; }
-  .c1 { background-image: url(bg1.jpg); color: #62232f; font-family: 'Ibarra Real Nova', serif; }
-  .c1 .t { letter-spacing: .2em; text-indent: .2em; }
-  .c1 .tajuk-k { top: 20.9%; font-size: 3.28cqw; line-height: 1.38; }
-  .c1 .nama-k  { top: 60.4%; font-size: 3.1cqw; letter-spacing: .06em; text-indent: .06em; }
-  .c1 .info    { top: 66.4%; font-size: 2.8cqw; line-height: 1.24; }
-  .c1 .info p + p { margin-top: .5em; }
-  .c1 .tag     { top: 77.7%; font-size: 2.45cqw; letter-spacing: .1em; }
-  .c2 { background-image: url(bg2.jpg); color: #fff; font-family: 'Source Serif 4', serif; font-size: 2.66cqw; }
-  .c2 .t { letter-spacing: .05em; }
-  .c2 b { font-weight: 700; }
-  .c2 .gap { margin-top: 1.15em; }
-  .c2 .skrip { font-family: 'Great Vibes', cursive; font-size: 4.6cqw; letter-spacing: 0; }
-  .c2 .head { font-weight: 700; font-size: 2.73cqw; letter-spacing: .25em; text-indent: .25em; }
-  .c2 .tarikh-k, .c2 .masa { font-variant-numeric: lining-nums; }
-  .c2 .tarikh-k { left: 8%; right: auto; width: 29%; font-family: 'Cormorant Garamond', serif; font-weight: 600; }
-  .c2 .tarikh-k .h { font-size: 2.73cqw; letter-spacing: .15em; }
-  .c2 .tarikh-k .d { font-size: 7.4cqw; line-height: 1; }
-  .c2 .tarikh-k .m { font-size: 2.4cqw; letter-spacing: .15em; }
-  .c2 .masa { font-family: 'Cormorant Garamond', serif; font-weight: 600; font-size: 3.1cqw; line-height: 1.33; }
-  .c2 .hubungi { display: flex; justify-content: center; gap: 5.2cqw; font-size: 2.42cqw; }
 
   /* ---------- RSVP ---------- */
   .borang { text-align: left; display: grid; gap: 14px; margin-top: 6px; }
@@ -235,12 +211,12 @@
     font-family: var(--body); font-size: 16px; font-weight: 400; color: var(--ink); outline: none; transition: border-color .2s, box-shadow .2s;
   }
   .borang textarea { min-height: 96px; resize: vertical; }
-  .borang input:focus, .borang select:focus, .borang textarea:focus { border-color: var(--rose); box-shadow: 0 0 0 3px rgba(197,143,149,.25); }
+  .borang input:focus, .borang select:focus, .borang textarea:focus { border-color: var(--aksen); box-shadow: 0 0 0 3px rgba(106,128,174,.25); }
   .pilihan { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
   .pilihan input { position: absolute; opacity: 0; pointer-events: none; }
   .pilihan span { display: block; text-align: center; padding: 12px 8px; border-radius: 12px; border: 1px solid var(--line); background: rgba(255,255,255,.6); font-family: var(--serif); font-weight: 600; font-size: 16px; cursor: pointer; transition: all .25s; }
   .pilihan input:checked + span { background: var(--ink); color: #fff; border-color: var(--ink); }
-  .pilihan input:focus-visible + span { box-shadow: 0 0 0 3px rgba(197,143,149,.45); }
+  .pilihan input:focus-visible + span { box-shadow: 0 0 0 3px rgba(106,128,174,.45); }
   .borang .butang { width: 100%; padding: 14px; font-size: 16px; }
   .nota { font-size: 13px; opacity: .7; text-align: center; font-family: var(--serif); }
 
@@ -267,18 +243,18 @@
   /* ---------- Penutup ---------- */
   .penutup .monogram { filter: brightness(0) invert(1); opacity: .9; width: 110px; }
   .penutup .doa-arab { font-family: 'Amiri', serif; font-size: 22px; direction: rtl; line-height: 2; }
-  .kaki { padding: 22px 20px calc(var(--nav-h) + 28px + env(safe-area-inset-bottom)); background: #3a0d16; color: #e7cfcf; text-align: center; font-family: var(--serif); font-size: 13px; letter-spacing: .12em; }
+  .kaki { padding: 22px 20px calc(var(--nav-h) + 28px + env(safe-area-inset-bottom)); background: #111d3d; color: #c9d3e8; text-align: center; font-family: var(--serif); font-size: 13px; letter-spacing: .12em; }
 
   /* ---------- Nav bawah ---------- */
   .nav {
     position: fixed; z-index: 30; left: 50%; bottom: calc(10px + env(safe-area-inset-bottom)); transform: translate(-50%, 140%);
     width: min(calc(100% - 20px), 440px); height: var(--nav-h); display: grid; grid-template-columns: repeat(5, 1fr);
-    background: rgba(78, 18, 28, .88); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+    background: rgba(27, 46, 88, .9); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
     border: 1px solid rgba(255,255,255,.18); border-radius: 22px; box-shadow: 0 12px 30px rgba(0,0,0,.35);
     transition: transform .9s var(--ease) 1.2s;
   }
   .nav.muncul { transform: translate(-50%, 0); }
-  .nav a, .nav button { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 3px; color: #f6e3df; text-decoration: none; background: none; border: 0; cursor: pointer; font-family: var(--serif); font-size: 11px; letter-spacing: .04em; }
+  .nav a, .nav button { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 3px; color: #e6ecf7; text-decoration: none; background: none; border: 0; cursor: pointer; font-family: var(--serif); font-size: 11px; letter-spacing: .04em; }
   .nav svg { width: 21px; height: 21px; }
   .nav .muzik svg { animation: pusing 4s linear infinite; animation-play-state: paused; }
   .nav .muzik.main svg { animation-play-state: running; }
@@ -307,7 +283,7 @@
   <div class="isi">
     <div class="kecil">Walimatul Urus</div>
     <div class="kad-mini" role="img" aria-label="Monogram WH"></div>
-    <h1>Nurhidayah <span>&amp;</span> Wan Irsyaduddin</h1>
+    <h1>Wan Irsyaduddin <span>&amp;</span> Nurhidayah</h1>
     <div class="kepada">Kepada</div>
     <div class="tetamu" id="namaTetamu">Tetamu Yang Dihormati</div>
     <button class="btn-buka" id="btnBuka" type="button">
@@ -329,11 +305,11 @@
     <img class="bunga b4" src="assets/bunga-c.webp" alt="">
     <div class="walimah r" style="--d:.2s">Majlis Kesyukuran<br>Sempena Perkahwinan</div>
     <img class="monogram r zoom" style="--d:.5s" src="assets/monogram.webp" alt="Monogram WH">
-    <div class="nama tulis" style="--d:1s">Nurhidayah</div>
+    <div class="nama tulis" style="--d:1s">Wan Irsyaduddin</div>
     <div class="dan r" style="--d:1.9s">&amp;</div>
-    <div class="nama tulis" style="--d:2.1s">Wan Irsyaduddin</div>
-    <div class="tarikh r" style="--d:3s">SABTU · 12.12.2026</div>
-    <div class="tempat r" style="--d:3.2s">Wakaf Bharu, Kelantan</div>
+    <div class="nama tulis" style="--d:2.1s">Nurhidayah</div>
+    <div class="tarikh r" style="--d:3s">AHAD · 13.12.2026</div>
+    <div class="tempat r" style="--d:3.2s">Pasir Puteh, Kelantan</div>
     <div class="hashtag r" style="--d:3.4s">#WanDaytillforever</div>
     <div class="skrol r" style="--d:3.8s">SKROL<i></i></div>
   </section>
@@ -356,11 +332,10 @@
     <div class="label r">Undangan</div>
     <h2 class="tajuk r">Walimatul Urus</h2>
     <p class="r">Assalamualaikum &amp; Salam Sejahtera<br>Dengan penuh rasa syukur kami</p>
-    <p class="ibubapa r">MOHAMAD SAUFI BIN NAWI<br>&amp;<br>ZUNAIDAH BINTI CHE HARUN</p>
+    <p class="ibubapa r">HJ. WAN ROSDI BIN WAN OTHMAN<br>&amp;<br>HJH. PARIDAH BINTI HASSAN</p>
     <p class="r">mengalu-alukan kehadiran<br>Dato’/Datin/Tuan/Puan/Encik/Cik</p>
-    <p class="r">ke Majlis Kesyukuran sempena<br>Perkahwinan Puteri kami</p>
-    <div class="pengantin r zoom">Nurhidayah binti<br>Mohamad Saufi<small>&amp;</small>Wan Muhammad Irsyaduddin<br>bin Wan Rosdi</div>
-    <p class="turut r">Turut mengundang<br>Kamaludin Bin Salleh dan seisi keluarga</p>
+    <p class="r">ke Majlis Kesyukuran sempena<br>Perkahwinan Putera kami</p>
+    <div class="pengantin r zoom">Wan Muhammad Irsyaduddin<br>bin Wan Rosdi<small>&amp;</small>Nurhidayah binti<br>Mohamad Saufi</div>
   </section>
 
   <!-- ================= BUTIRAN & KIRAAN DETIK ================= -->
@@ -370,12 +345,12 @@
     <div class="label r">Butiran Majlis</div>
     <h2 class="tajuk r">Save the Date</h2>
     <div class="tarikh-besar r zoom">
-      <div class="sisi">Sabtu</div>
-      <div class="hari">12</div>
+      <div class="sisi">Ahad</div>
+      <div class="hari">13</div>
       <div class="sisi">Dis 2026</div>
     </div>
-    <div class="butir r"><b>MASA</b>12.30 tengah hari – 5.00 petang</div>
-    <div class="butir r"><b>TEMPAT</b>Lot 417D Kg Pasir Pekan<br>Wakaf Bharu, Kelantan</div>
+    <div class="butir r"><b>MASA</b>12.00 tengah hari – 5.00 petang</div>
+    <div class="butir r"><b>TEMPAT</b>Omah Kasmini<br>Pasir Puteh, Kelantan</div>
     <div class="kiraan r" id="kiraan" aria-live="polite">
       <div><span id="kHari">0</span><small>Hari</small></div>
       <div><span id="kJam">0</span><small>Jam</small></div>
@@ -397,7 +372,7 @@
     <div class="label r">Tentatif</div>
     <h2 class="tajuk r">Aturcara Majlis</h2>
     <div class="garis-masa">
-      <div class="acara r kiri"><time>12.30<small>tgh hari</small></time><p>Ketibaan tetamu &amp; jamuan makan</p></div>
+      <div class="acara r kiri"><time>12.00<small>tgh hari</small></time><p>Ketibaan tetamu &amp; jamuan makan</p></div>
       <div class="acara r kiri" style="--d:.1s"><time>2.00<small>petang</small></time><p>Ketibaan pengantin</p></div>
       <div class="acara r kiri" style="--d:.2s"><time>2.30<small>petang</small></time><p>Sesi bergambar bersama pengantin &amp; keluarga</p></div>
       <div class="acara r kiri" style="--d:.3s"><time>5.00<small>petang</small></time><p>Majlis bersurai</p></div>
@@ -411,7 +386,7 @@
     <img class="sudut br" src="assets/garis-bunga.webp" alt="">
     <div class="label r">Lokasi</div>
     <h2 class="tajuk r">Tempat Majlis</h2>
-    <p class="butir r" style="margin-top:0">Lot 417D Kg Pasir Pekan<br>Wakaf Bharu, Kelantan</p>
+    <p class="butir r" style="margin-top:0">Omah Kasmini<br>Pasir Puteh, Kelantan</p>
     <div class="peta r zoom" id="peta"></div>
     <div class="baris-butang r">
       <a class="butang isi" id="btnGmap" target="_blank" rel="noopener">
@@ -426,38 +401,8 @@
     <div class="label r">Kad Jemputan</div>
     <h2 class="tajuk r">Kad Kami</h2>
     <div class="gelongsor r" id="gelongsor">
-      <div class="card c1">
-        <div class="t tajuk-k">MAJLIS KESYUKURAN<br>SEMPENA PERKAHWINAN</div>
-        <div class="t nama-k">NURHIDAYAH &amp; WAN IRSYADUDDIN</div>
-        <div class="t info">
-          <p>SABTU | 12 DISEMBER 2026</p>
-          <p style="margin-top:.35em">LOT 417D KG PASIR PEKAN<br>WAKAF BHARU, KELANTAN</p>
-        </div>
-        <div class="t tag">#WanDaytillforever</div>
-      </div>
-      <div class="card c2">
-        <div class="t" style="top:8.4%">
-          Assalamualaikum &amp; Salam Sejahtera<br>Dengan penuh rasa syukur kami
-          <p class="gap"><b>MOHAMAD SAUFI BIN NAWI<br>&amp;<br>ZUNAIDAH BINTI CHE HARUN</b></p>
-          <p class="gap">mengalu-alukan kehadiran<br>Dato’/Datin/Tuan/Puan/Encik/Cik</p>
-        </div>
-        <div class="t" style="top:34.6%">ke Majlis Kesyukuran sempena Perkahwinan Puteri kami</div>
-        <div class="t skrip" style="top:40.4%">Nurhidayah binti Mohamad Saufi</div>
-        <div class="t skrip" style="top:46%; font-size:3.9cqw">&amp;</div>
-        <div class="t skrip" style="top:49.9%">Wan Muhammad Irsyaduddin bin Wan Rosdi</div>
-        <div class="t head" style="top:57.7%">ATURCARA MAJLIS</div>
-        <div class="t tarikh-k" style="top:61.6%">
-          <div class="h">SABTU</div><div class="d">12</div><div class="m">DISEMBER 2026</div>
-        </div>
-        <div class="t masa" style="top:62.3%">12.30 tengah hari<br>-<br>5.00 petang</div>
-        <div class="t" style="top:75.4%">Turut mengundang<br>Kamaludin Bin Salleh dan seisi keluarga</div>
-        <div class="t head" style="top:83.3%; font-size:2.6cqw">UNTUK DIHUBUNGI</div>
-        <div class="t hubungi" style="top:86.6%">
-          <a href="tel:+60179394498">017-9394498<br>Saufi</a>
-          <a href="tel:+60129612272">012-9612272<br>Kamaludin</a>
-          <a href="tel:+60147938847">014-7938847<br>Taufiq</a>
-        </div>
-      </div>
+      <img class="card" src="assets/kad-1.jpg" alt="Kad jemputan muka hadapan" loading="lazy">
+      <img class="card" src="assets/kad-2.jpg" alt="Kad jemputan muka belakang" loading="lazy">
     </div>
     <div class="titik" id="titik"><i class="aktif"></i><i></i></div>
   </section>
@@ -528,7 +473,7 @@
     <p class="r" style="font-family:var(--serif); letter-spacing:.1em">#WanDaytillforever</p>
   </section>
 
-  <footer class="kaki">NURHIDAYAH &amp; WAN IRSYADUDDIN · 12.12.2026</footer>
+  <footer class="kaki">WAN IRSYADUDDIN &amp; NURHIDAYAH · 13.12.2026</footer>
 </main>
 
 <!-- ================= NAV BAWAH ================= -->
@@ -550,15 +495,16 @@
 <script>
   /* ====== Tetapan — ubah di sini ====== */
   const CONFIG = {
-    mula: '2026-12-12T12:30:00+08:00',
-    tamat: '2026-12-12T17:00:00+08:00',
-    tajukMajlis: 'Majlis Kesyukuran Nurhidayah & Wan Irsyaduddin',
-    alamat: 'Lot 417D Kg Pasir Pekan, Wakaf Bharu, Kelantan',
-    rsvpWhatsApp: '60179394498', // nombor penerima RSVP (format antarabangsa, tanpa +)
+    mula: '2026-12-13T12:00:00+08:00',
+    tamat: '2026-12-13T17:00:00+08:00',
+    tajukMajlis: 'Majlis Kesyukuran Wan Irsyaduddin & Nurhidayah',
+    alamat: 'Omah Kasmini, Pasir Puteh, Kelantan',
+    peta: 'https://maps.app.goo.gl/p8VimURN6Yo22LUYA', // dari kod QR pada kad
+    rsvpWhatsApp: '60199823198', // nombor penerima RSVP (format antarabangsa, tanpa +)
     hubungi: [
-      { nama: 'Saufi', tel: '60179394498', papar: '017-939 4498' },
-      { nama: 'Kamaludin', tel: '60129612272', papar: '012-961 2272' },
-      { nama: 'Taufiq', tel: '60147938847', papar: '014-793 8847' },
+      { nama: 'Wan Rosdi', tel: '60199823198', papar: '019-982 3198' },
+      { nama: 'Paridah', tel: '60199314970', papar: '019-931 4970' },
+      { nama: 'Azfar Fitri', tel: '60109161858', papar: '010-916 1858' },
     ],
     bank: { nama: '[Nama Bank]', akaun: '0000 0000 0000', pemilik: '[Nama Pemilik Akaun]' },
   };
@@ -648,7 +594,7 @@
 
   /* ====== Kalendar ====== */
   const utc = (iso) => new Date(iso).toISOString().replace(/[-:]/g, '').replace(/\.\d{3}/, '');
-  const butiran = 'Majlis Kesyukuran sempena Perkahwinan Nurhidayah & Wan Irsyaduddin. 12.30 tengah hari - 5.00 petang.';
+  const butiran = 'Majlis Kesyukuran sempena Perkahwinan Wan Irsyaduddin & Nurhidayah. 12.00 tengah hari - 5.00 petang.';
   $('#btnGcal').href = 'https://calendar.google.com/calendar/render?action=TEMPLATE'
     + '&text=' + encodeURIComponent(CONFIG.tajukMajlis)
     + '&dates=' + utc(CONFIG.mula) + '/' + utc(CONFIG.tamat)
@@ -657,7 +603,7 @@
   $('#btnIcs').addEventListener('click', () => {
     const ics = [
       'BEGIN:VCALENDAR', 'VERSION:2.0', 'PRODID:-//Kad Kahwin//MS', 'BEGIN:VEVENT',
-      'UID:wanday-20261212@kadkahwin', 'DTSTAMP:' + utc(new Date().toISOString()),
+      'UID:wanday-20261213@kadkahwin', 'DTSTAMP:' + utc(new Date().toISOString()),
       'DTSTART:' + utc(CONFIG.mula), 'DTEND:' + utc(CONFIG.tamat),
       'SUMMARY:' + CONFIG.tajukMajlis, 'DESCRIPTION:' + butiran,
       'LOCATION:' + CONFIG.alamat.replace(/,/g, '\\,'),
@@ -666,14 +612,14 @@
     ].join('\r\n');
     const a = document.createElement('a');
     a.href = URL.createObjectURL(new Blob([ics], { type: 'text/calendar' }));
-    a.download = 'majlis-nurhidayah-wan-irsyaduddin.ics';
+    a.download = 'majlis-wan-irsyaduddin-nurhidayah.ics';
     a.click();
     setTimeout(() => URL.revokeObjectURL(a.href), 1000);
   });
 
   /* ====== Lokasi ====== */
   const q = encodeURIComponent(CONFIG.alamat);
-  $('#btnGmap').href = 'https://www.google.com/maps/search/?api=1&query=' + q;
+  $('#btnGmap').href = CONFIG.peta;
   $('#btnWaze').href = 'https://waze.com/ul?q=' + q + '&navigate=yes';
   // muat peta hanya bila hampir kelihatan
   new IntersectionObserver((e, o) => {
@@ -699,7 +645,7 @@
     const nama = borang.nama.value.trim();
     if (!nama) { borang.nama.focus(); toast('Sila isi nama anda'); return; }
     const hadir = borang.hadir.value;
-    let msg = `*RSVP Majlis Nurhidayah & Wan Irsyaduddin*\n\nNama: ${nama}\nKehadiran: ${hadir}`;
+    let msg = `*RSVP Majlis Wan Irsyaduddin & Nurhidayah*\n\nNama: ${nama}\nKehadiran: ${hadir}`;
     if (hadir === 'Hadir') msg += `\nBilangan: ${borang.bil.value} orang`;
     if (borang.ucapan.value.trim()) msg += `\n\nUcapan:\n${borang.ucapan.value.trim()}`;
     window.open(`https://wa.me/${CONFIG.rsvpWhatsApp}?text=${encodeURIComponent(msg)}`, '_blank', 'noopener');
@@ -742,7 +688,7 @@
     let W, H, dpr;
     const saiz = () => { dpr = Math.min(2, devicePixelRatio || 1); W = cv.width = innerWidth * dpr; H = cv.height = innerHeight * dpr; };
     saiz(); addEventListener('resize', saiz);
-    const warna = ['#e8c4c4', '#f1d9d6', '#d9a3a8', '#f6e6e1', '#c98d93'];
+    const warna = ['#dfe6f4', '#c4d1ea', '#a9bbdf', '#eef2f9', '#8fa5d2'];
     const jumlah = Math.round(Math.min(26, 10 + innerWidth / 40));
     const baru = (atas) => ({
       x: Math.random() * W, y: atas ? -20 * dpr : Math.random() * H,
