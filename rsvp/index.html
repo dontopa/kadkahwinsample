@@ -1,0 +1,136 @@
+<!doctype html>
+<html lang="ms">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#1b2e58">
+<title>Senarai RSVP · Wan Irsyaduddin &amp; Nurhidayah</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600&family=Great+Vibes&family=Source+Serif+4:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+  :root { --navy: #1b2e58; --ink: #1d3160; --ivory: #f5f4f0; --aksen: #6a80ae; --line: rgba(29,49,96,.18); --serif: 'Cormorant Garamond', serif; }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: var(--ivory); color: var(--ink); font-family: 'Source Serif 4', Georgia, serif; font-size: 15px; line-height: 1.5; font-variant-numeric: lining-nums; }
+  header { background: var(--navy); color: #fff; text-align: center; padding: 34px 16px 30px; }
+  header small { font-family: var(--serif); letter-spacing: .35em; text-transform: uppercase; font-size: 12px; opacity: .8; }
+  header h1 { font-family: 'Great Vibes', cursive; font-weight: 400; font-size: clamp(28px, 8.5vw, 40px); line-height: 1.2; }
+  header p { font-family: var(--serif); font-size: 15px; opacity: .85; }
+  main { max-width: 720px; margin: 0 auto; padding: 18px 16px 40px; }
+  .ringkasan { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-top: -40px; }
+  .ringkasan div { background: #fff; border: 1px solid var(--line); border-radius: 14px; padding: 12px 8px; text-align: center; box-shadow: 0 8px 20px rgba(0,0,0,.08); }
+  .ringkasan b { display: block; font-family: var(--serif); font-size: 30px; line-height: 1.1; }
+  .ringkasan span { font-size: 11px; letter-spacing: .12em; text-transform: uppercase; opacity: .7; }
+  .alat { display: flex; gap: 8px; margin: 18px 0 12px; flex-wrap: wrap; }
+  .alat input, .alat select { flex: 1; min-width: 140px; padding: 10px 12px; border-radius: 10px; border: 1px solid var(--line); background: #fff; font: inherit; color: inherit; }
+  button { cursor: pointer; padding: 10px 14px; border-radius: 10px; border: 1px solid var(--ink); background: var(--ink); color: #fff; font: inherit; font-weight: 600; }
+  button.garis { background: transparent; color: var(--ink); }
+  .senarai { display: grid; gap: 8px; }
+  .baris { display: grid; grid-template-columns: 1fr auto; gap: 4px 12px; align-items: center; background: #fff; border: 1px solid var(--line); border-radius: 12px; padding: 12px 14px; }
+  .baris .nama { font-weight: 600; overflow-wrap: anywhere; }
+  .baris .masa { grid-column: 1; font-size: 12px; opacity: .6; }
+  .baris .status { grid-row: 1 / span 2; grid-column: 2; text-align: right; font-family: var(--serif); font-weight: 600; font-size: 16px; }
+  .baris .status small { display: block; font-family: 'Source Serif 4', serif; font-weight: 400; font-size: 12px; opacity: .7; }
+  .tidak .status { color: #9a4a4a; }
+  .mesej { text-align: center; padding: 30px 10px; opacity: .75; }
+  .kunci { max-width: 360px; margin: 30px auto; display: grid; gap: 10px; text-align: center; }
+  .kunci input { padding: 12px; border-radius: 10px; border: 1px solid var(--line); font: inherit; text-align: center; }
+  [hidden] { display: none !important; }
+</style>
+</head>
+<body>
+<header>
+  <small>Senarai RSVP</small>
+  <h1>Wan Irsyaduddin &amp; Nurhidayah</h1>
+  <p>Ahad, 13 Disember 2026 · Pasir Puteh</p>
+</header>
+<main>
+  <form class="kunci" id="borangKunci" hidden>
+    <p>Masukkan kunci untuk melihat senarai RSVP.</p>
+    <input type="password" id="inKunci" placeholder="Kunci" autocomplete="current-password" required>
+    <button type="submit">Lihat Senarai</button>
+  </form>
+  <div id="isi" hidden>
+    <div class="ringkasan">
+      <div><b id="jHadir">0</b><span>Orang hadir</span></div>
+      <div><b id="jRespon">0</b><span>Respon hadir</span></div>
+      <div><b id="jTidak">0</b><span>Tidak hadir</span></div>
+    </div>
+    <div class="alat">
+      <input type="search" id="cari" placeholder="Cari nama…">
+      <select id="tapis"><option value="">Semua</option><option>Hadir</option><option>Tidak Hadir</option></select>
+      <button type="button" class="garis" id="btnMuat">Muat semula</button>
+      <button type="button" id="btnCsv">Muat turun CSV</button>
+    </div>
+    <div class="senarai" id="senarai"></div>
+  </div>
+  <p class="mesej" id="mesej">Memuatkan…</p>
+</main>
+<script src="../config.js"></script>
+<script>
+  const KAD = 'lelaki';
+  const $ = (s) => document.querySelector(s);
+  const simpan = (k, v) => { try { v == null ? localStorage.removeItem(k) : localStorage.setItem(k, v); } catch {} };
+  const ambil = (k) => { try { return localStorage.getItem(k); } catch { return null; } };
+  let kunci = new URLSearchParams(location.search).get('kunci') || ambil('rsvp-kunci');
+  let data = [];
+
+  function mesej(t) { $('#mesej').textContent = t; $('#mesej').hidden = !t; }
+  const tarikh = (t) => new Date(t).toLocaleString('ms-MY', { day: 'numeric', month: 'short', hour: 'numeric', minute: '2-digit' });
+
+  function papar() {
+    const q = $('#cari').value.trim().toLowerCase(), f = $('#tapis').value;
+    const hadir = data.filter((r) => r.hadir === 'Hadir');
+    $('#jHadir').textContent = hadir.reduce((a, r) => a + r.bil, 0);
+    $('#jRespon').textContent = hadir.length;
+    $('#jTidak').textContent = data.length - hadir.length;
+    const list = data.filter((r) => (!f || r.hadir === f) && (!q || r.nama.toLowerCase().includes(q)));
+    $('#senarai').textContent = '';
+    list.forEach((r) => {
+      const d = document.createElement('div'); d.className = 'baris' + (r.hadir === 'Hadir' ? '' : ' tidak');
+      const n = document.createElement('div'); n.className = 'nama'; n.textContent = r.nama;
+      const m = document.createElement('div'); m.className = 'masa'; m.textContent = tarikh(r.masa);
+      const s = document.createElement('div'); s.className = 'status';
+      s.textContent = r.hadir;
+      if (r.hadir === 'Hadir') { const sm = document.createElement('small'); sm.textContent = r.bil + ' orang'; s.append(sm); }
+      d.append(n, s, m); $('#senarai').append(d);
+    });
+    mesej(data.length ? (list.length ? '' : 'Tiada padanan.') : 'Belum ada RSVP.');
+  }
+
+  async function muat() {
+    if (!window.KAD_API) { mesej('Google Sheet belum disambung. Isi KAD_API dalam config.js.'); return; }
+    if (!kunci) { $('#borangKunci').hidden = false; mesej(''); return; }
+    mesej('Memuatkan…');
+    try {
+      const r = await fetch(window.KAD_API + '?jenis=rsvp&kad=' + KAD + '&kunci=' + encodeURIComponent(kunci));
+      const j = await r.json();
+      if (!j.ok) {
+        simpan('rsvp-kunci', null); kunci = null;
+        $('#isi').hidden = true; $('#borangKunci').hidden = false;
+        mesej(j.ralat || 'Ralat'); return;
+      }
+      simpan('rsvp-kunci', kunci);
+      data = j.data || [];
+      $('#borangKunci').hidden = true; $('#isi').hidden = false;
+      papar();
+    } catch (e) { console.error(e); mesej('Gagal memuatkan data. Cuba lagi.'); }
+  }
+
+  $('#borangKunci').addEventListener('submit', (e) => { e.preventDefault(); kunci = $('#inKunci').value.trim(); muat(); });
+  $('#cari').addEventListener('input', papar);
+  $('#tapis').addEventListener('change', papar);
+  $('#btnMuat').addEventListener('click', muat);
+  $('#btnCsv').addEventListener('click', () => {
+    const esc = (v) => '"' + String(v).replace(/"/g, '""') + '"';
+    const rows = [['Masa', 'Nama', 'Kehadiran', 'Bilangan'], ...data.map((r) => [tarikh(r.masa), r.nama, r.hadir, r.bil])];
+    const a = document.createElement('a');
+    a.href = URL.createObjectURL(new Blob(['﻿' + rows.map((r) => r.map(esc).join(',')).join('\r\n')], { type: 'text/csv' }));
+    a.download = 'rsvp-' + KAD + '.csv'; a.click();
+    setTimeout(() => URL.revokeObjectURL(a.href), 1000);
+  });
+  muat();
+</script>
+</body>
+</html>
