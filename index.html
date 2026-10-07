@@ -248,10 +248,17 @@
   .nav.muncul { transform: translate(-50%, 0); }
   .nav a, .nav button { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 3px; color: #e6ecf7; text-decoration: none; background: none; border: 0; cursor: pointer; font-family: var(--serif); font-size: 11px; letter-spacing: .04em; }
   .nav svg { width: 21px; height: 21px; }
-  .nav .muzik svg { animation: pusing 4s linear infinite; animation-play-state: paused; }
-  .nav .muzik.main svg { animation-play-state: running; }
-  .nav .muzik .gel { display: none; }
-  .nav .muzik.main .gel { display: block; }
+  .btn-muzik {
+    position: fixed; z-index: 31; top: calc(14px + env(safe-area-inset-top)); right: max(14px, calc(50% - 226px));
+    width: 44px; height: 44px; border-radius: 50%; display: grid; place-items: center; cursor: pointer;
+    background: var(--navy); color: #fff; border: 1px solid rgba(255,255,255,.35); box-shadow: 0 6px 16px rgba(0,0,0,.3);
+    opacity: 0; transform: scale(.6); pointer-events: none; transition: opacity .6s ease 1.4s, transform .6s var(--ease) 1.4s;
+  }
+  .btn-muzik.muncul { opacity: 1; transform: none; pointer-events: auto; }
+  .btn-muzik svg { width: 24px; height: 24px; animation: pusing 4s linear infinite; animation-play-state: paused; }
+  .btn-muzik.main svg { animation-play-state: running; }
+  .btn-muzik .gel { display: none; }
+  .btn-muzik.main .gel { display: block; }
   @keyframes pusing { to { transform: rotate(360deg); } }
 
   .toast { position: fixed; z-index: 60; left: 50%; bottom: calc(var(--nav-h) + 26px + env(safe-area-inset-bottom)); transform: translate(-50%, 20px); opacity: 0; background: #fff; color: var(--ink); padding: 10px 18px; border-radius: 999px; font-family: var(--serif); font-weight: 600; box-shadow: 0 8px 20px rgba(0,0,0,.25); transition: all .35s var(--ease); pointer-events: none; white-space: nowrap; }
@@ -464,15 +471,16 @@
   <footer class="kaki">WAN IRSYADUDDIN &amp; NURHIDAYAH · 13.12.2026</footer>
 </main>
 
+<button class="btn-muzik" id="btnMuzik" type="button" aria-label="Main / henti muzik">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="2.5"/><path class="gel" d="M12 3a9 9 0 0 1 9 9" stroke-width="2.2" stroke-linecap="round"/></svg>
+</button>
+
 <!-- ================= NAV BAWAH ================= -->
 <nav class="nav" id="nav" aria-label="Navigasi">
-  <button class="muzik" id="btnMuzik" type="button" aria-label="Main / henti muzik">
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="2.5"/><path class="gel" d="M12 3a9 9 0 0 1 9 9" stroke-width="2.2" stroke-linecap="round"/></svg>
-    <span id="lblMuzik">Muzik</span>
-  </button>
   <a href="#majlis"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></svg>Tarikh</a>
   <a href="#lokasi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-6.2-7-11.5a7 7 0 0 1 14 0C19 14.8 12 21 12 21Z"/><circle cx="12" cy="9.5" r="2.5"/></svg>Lokasi</a>
-  <a href="#rsvp"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5h16v11H8l-4 4z"/><path d="M8 10h8"/></svg>RSVP</a>
+  <a href="#rsvp"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="3" width="16" height="18" rx="2"/><path d="m8.5 12 2.5 2.5 4.5-5"/></svg>RSVP</a>
+  <a href="#ucapan"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5h16v11H8l-4 4z"/><path d="M12 13.2s-3-1.8-3-3.6a1.5 1.5 0 0 1 3-.6 1.5 1.5 0 0 1 3 .6c0 1.8-3 3.6-3 3.6Z"/></svg>Ucapan</a>
   <a href="#hubungi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2"/></svg>Hubungi</a>
 </nav>
 
@@ -519,8 +527,8 @@
       lagu.pause();
     }
   }
-  lagu.addEventListener('play', () => { btnMuzik.classList.add('main'); $('#lblMuzik').textContent = 'Jeda'; });
-  lagu.addEventListener('pause', () => { btnMuzik.classList.remove('main'); $('#lblMuzik').textContent = 'Muzik'; });
+  lagu.addEventListener('play', () => btnMuzik.classList.add('main'));
+  lagu.addEventListener('pause', () => btnMuzik.classList.remove('main'));
   btnMuzik.addEventListener('click', () => setMuzik(lagu.paused));
   document.addEventListener('visibilitychange', () => {
     if (document.hidden) lagu.pause();
@@ -535,6 +543,7 @@
     document.body.classList.remove('terkunci');
     window.scrollTo(0, 0);
     $('#nav').classList.add('muncul');
+    btnMuzik.classList.add('muncul');
     setTimeout(() => $('#utama').classList.add('mula'), 700);
     setTimeout(() => cover.classList.add('hilang'), 2200);
     mulaKelopak();
@@ -645,12 +654,12 @@
     const btn = bu.querySelector('button'); btn.disabled = true;
     try {
       const r = await fetch('/', { method: 'POST', headers: { 'Content-Type': 'application/x-www-form-urlencoded' }, body: new URLSearchParams(new FormData(bu)).toString() });
-      if (!r.ok) throw 0;
+      if (!r.ok) throw new Error('HTTP ' + r.status);
       const d = document.createElement('div');
       const b = document.createElement('b'); b.textContent = bu.nama.value.trim();
       d.append(b, bu.ucapan.value.trim()); $('#senaraiUcapan').prepend(d);
       bu.reset(); toast('Terima kasih atas ucapan anda');
-    } catch { toast('Gagal dihantar, cuba lagi'); }
+    } catch (e) { console.error('Ucapan gagal:', e); toast('Gagal dihantar (' + (e.message || 'rangkaian') + ')'); }
     btn.disabled = false;
   });
 
