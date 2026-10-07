@@ -13,6 +13,8 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Great+Vibes&family=Ibarra+Real+Nova&family=Source+Serif+4:wght@400;700&display=swap" rel="stylesheet">
 <link rel="preload" href="assets/monogram.webp" as="image">
+<link rel="preconnect" href="https://script.google.com">
+<link rel="preconnect" href="https://script.googleusercontent.com">
 <style>
   :root {
     --navy: #1b2e58;
@@ -93,7 +95,7 @@
   .cover.hilang { display: none; }
 
   /* ---------- Seksyen ---------- */
-  section.s { position: relative; padding: 72px 26px; text-align: center; overflow: hidden; }
+  section.s { position: relative; padding: 72px 26px; text-align: center; overflow: hidden; overflow: clip; }
   .s.gelap { background: radial-gradient(120% 80% at 50% 0%, #2a4479 0%, var(--navy) 70%); color: #eef2fa; }
   .s.terang { background: radial-gradient(120% 70% at 50% 50%, #fcfcfa 0%, var(--ivory) 55%, var(--paper) 100%); }
   .label { font-family: var(--serif); font-size: 12px; letter-spacing: .4em; text-indent: .4em; text-transform: uppercase; opacity: .8; }
@@ -197,12 +199,19 @@
   .ucapan-borang label { color: #eef2fa; }
   .ucapan-borang input, .ucapan-borang textarea { background: rgba(255,255,255,.92); }
   .senarai-ucapan { display: grid; gap: 10px; margin-top: 18px; text-align: left; }
-  .senarai-ucapan { max-height: 460px; overflow-y: auto; padding-right: 4px; overscroll-behavior: contain; }
   .senarai-ucapan:empty { display: none; }
   .senarai-ucapan div { padding: 14px 16px; border-radius: 14px; background: rgba(255,255,255,.1); border: 1px solid rgba(255,255,255,.25); font-family: var(--serif); animation: masuk .6s var(--ease); }
   .senarai-ucapan b { display: block; font-size: 13px; letter-spacing: .12em; text-transform: uppercase; opacity: .85; margin-bottom: 2px; }
   .senarai-ucapan p { font-size: 16px; line-height: 1.5; white-space: pre-line; overflow-wrap: anywhere; }
   .senarai-ucapan small { display: block; margin-top: 6px; font-size: 12px; opacity: .6; }
+  .senarai-ucapan div.hantar { opacity: .7; }
+  .halaman { display: flex; align-items: center; justify-content: center; gap: 10px; margin-top: 14px; font-family: var(--serif); }
+  .halaman[hidden] { display: none; }
+  .halaman button { min-width: 44px; height: 40px; padding: 0 14px; border-radius: 999px; border: 1px solid rgba(255,255,255,.45); background: transparent; color: inherit; font: inherit; font-weight: 600; cursor: pointer; }
+  .halaman button:disabled { opacity: .3; cursor: default; }
+  .halaman span { min-width: 64px; font-size: 15px; letter-spacing: .08em; }
+  .butang .putar { width: 18px; height: 18px; border-radius: 50%; border: 2px solid currentColor; border-right-color: transparent; animation: pusing .7s linear infinite; }
+  .butang:disabled { cursor: default; }
   @keyframes masuk { from { opacity: 0; transform: translateY(10px); } }
 
   /* ---------- Hubungi ---------- */
@@ -404,6 +413,11 @@
       <button class="butang isi" type="submit">Hantar Ucapan</button>
     </form>
     <div class="senarai-ucapan" id="senaraiUcapan" aria-live="polite"></div>
+    <div class="halaman" id="halamanUcapan" hidden>
+      <button type="button" id="hlmSebelum" aria-label="Halaman sebelum">‹</button>
+      <span id="hlmNo">1 / 1</span>
+      <button type="button" id="hlmSeterus" aria-label="Halaman seterusnya">›</button>
+    </div>
   </section>
 
   <!-- ================= HUBUNGI ================= -->
@@ -600,20 +614,29 @@
       window.open(`https://wa.me/${CONFIG.rsvpWhatsApp}?text=${encodeURIComponent(msg)}`, '_blank', 'noopener');
       return;
     }
-    const btn = borang.querySelector('button'); btn.disabled = true;
+    // Papar kejayaan serta-merta; hantar ke Google Sheet di latar belakang
+    const bil = borang.bil.value, btn = borang.querySelector('button[type=submit]'), asal = btn.innerHTML;
+    const notaAsal = $('#rsvpNota').textContent;
+    btn.disabled = true; btn.innerHTML = '<i class="putar"></i> Menghantar…';
+    $('#rsvpNota').textContent = hadir === 'Hadir' ? `Terima kasih ${nama}, kehadiran anda telah direkodkan.` : `Terima kasih ${nama}, maklum balas anda telah direkodkan.`;
+    toast('RSVP diterima. Terima kasih!');
+    borang.reset(); $('#lblBil').style.display = '';
     try {
-      await hantarApi({ jenis: 'rsvp', nama, hadir, bil: borang.bil.value, website: borang.website.value });
-      borang.reset(); $('#lblBil').style.display = '';
-      $('#rsvpNota').textContent = hadir === 'Hadir' ? `Terima kasih ${nama}, kehadiran anda telah direkodkan.` : `Terima kasih ${nama}, maklum balas anda telah direkodkan.`;
-      toast('RSVP diterima. Terima kasih!');
-    } catch (e) { console.error('RSVP gagal:', e); toast('Gagal dihantar, cuba lagi'); }
-    btn.disabled = false;
+      await hantarApi({ jenis: 'rsvp', nama, hadir, bil, website: borang.website.value });
+    } catch (e) {
+      console.error('RSVP gagal:', e);
+      borang.nama.value = nama; borang.hadir.value = hadir; borang.bil.value = bil;
+      $('#lblBil').style.display = hadir === 'Hadir' ? '' : 'none';
+      $('#rsvpNota').textContent = notaAsal;
+      toast('Gagal dihantar, sila cuba lagi');
+    }
+    btn.disabled = false; btn.innerHTML = asal;
   });
 
   /* ====== Google Sheet API (config.js) ====== */
   const KAD = 'lelaki';
   async function hantarApi(data) {
-    const r = await fetch(window.KAD_API, { method: 'POST', body: new URLSearchParams({ ...data, kad: KAD }) });
+    const r = await fetch(window.KAD_API, { method: 'POST', body: new URLSearchParams({ ...data, kad: KAD }), keepalive: true });
     const j = await r.json();
     if (!j.ok) throw new Error(j.ralat || 'Ralat');
   }
@@ -629,21 +652,38 @@
     if (s < 86400 * 30) return Math.floor(s / 86400) + ' hari lalu';
     return new Date(t).toLocaleDateString('ms-MY', { day: 'numeric', month: 'short', year: 'numeric' });
   };
-  function kadUcapan(u, baru) {
-    const d = document.createElement('div');
-    const b = document.createElement('b'); b.textContent = u.nama;
-    const p = document.createElement('p'); p.textContent = u.ucapan;
-    const t = document.createElement('small'); t.textContent = masaLalu(u.masa);
-    d.append(b, p, t);
-    $('#senaraiUcapan')[baru ? 'prepend' : 'append'](d);
+  const SAIZ = 10;
+  let ucapanSemua = [], hlm = 0;
+  function paparUcapan() {
+    const jumlahHlm = Math.max(1, Math.ceil(ucapanSemua.length / SAIZ));
+    hlm = Math.min(hlm, jumlahHlm - 1);
+    const senarai = $('#senaraiUcapan'); senarai.textContent = '';
+    ucapanSemua.slice(hlm * SAIZ, hlm * SAIZ + SAIZ).forEach((u) => {
+      const d = document.createElement('div'); if (u.hantar) d.className = 'hantar';
+      const b = document.createElement('b'); b.textContent = u.nama;
+      const p = document.createElement('p'); p.textContent = u.ucapan;
+      const t = document.createElement('small'); t.textContent = u.hantar ? 'menghantar…' : masaLalu(u.masa);
+      d.append(b, p, t); senarai.append(d);
+    });
+    $('#halamanUcapan').hidden = jumlahHlm < 2;
+    $('#hlmNo').textContent = (hlm + 1) + ' / ' + jumlahHlm;
+    $('#hlmSebelum').disabled = hlm === 0;
+    $('#hlmSeterus').disabled = hlm >= jumlahHlm - 1;
   }
+  function tukarHlm(n) {
+    hlm += n; paparUcapan();
+    const y = $('#senaraiUcapan').getBoundingClientRect().top + scrollY - 90;
+    if (y < scrollY) scrollTo({ top: y, behavior: 'smooth' });
+  }
+  $('#hlmSebelum').addEventListener('click', () => tukarHlm(-1));
+  $('#hlmSeterus').addEventListener('click', () => tukarHlm(1));
   async function muatUcapan() {
     if (!window.KAD_API) return;
     try {
       const r = await fetch(window.KAD_API + '?jenis=ucapan&kad=' + KAD);
       const j = await r.json();
-      $('#senaraiUcapan').textContent = '';
-      (j.data || []).forEach((u) => kadUcapan(u));
+      ucapanSemua = [...ucapanSemua.filter((u) => u.hantar), ...(j.data || [])];
+      paparUcapan();
     } catch (e) { console.error('Gagal muat ucapan:', e); }
   }
   new IntersectionObserver((e, o) => { if (e[0].isIntersecting) { muatUcapan(); o.disconnect(); } }, { rootMargin: '600px' }).observe($('#ucapan'));
@@ -652,13 +692,23 @@
     const nama = bu.nama.value.trim(), ucapan = bu.ucapan.value.trim();
     if (!nama || !ucapan) { toast('Sila isi nama & ucapan'); return; }
     if (!window.KAD_API) { toast('Ucapan belum disambung ke Google Sheet'); return; }
-    const btn = bu.querySelector('button'); btn.disabled = true;
+    // Papar ucapan serta-merta; hantar ke Google Sheet di latar belakang
+    const item = { nama, ucapan, masa: new Date().toISOString(), hantar: true };
+    ucapanSemua.unshift(item); hlm = 0; paparUcapan();
+    const btn = bu.querySelector('button[type=submit]'), asal = btn.innerHTML;
+    btn.disabled = true; btn.innerHTML = '<i class="putar"></i> Menghantar…';
+    bu.reset(); toast('Terima kasih atas ucapan anda');
     try {
       await hantarApi({ jenis: 'ucapan', nama, ucapan, website: bu.website.value });
-      kadUcapan({ nama, ucapan, masa: new Date().toISOString() }, true);
-      bu.reset(); toast('Terima kasih atas ucapan anda');
-    } catch (e) { console.error('Ucapan gagal:', e); toast('Gagal dihantar, cuba lagi'); }
-    btn.disabled = false;
+      item.hantar = false;
+    } catch (e) {
+      console.error('Ucapan gagal:', e);
+      ucapanSemua = ucapanSemua.filter((u) => u !== item);
+      bu.nama.value = nama; bu.ucapan.value = ucapan;
+      toast('Gagal dihantar, sila cuba lagi');
+    }
+    paparUcapan();
+    btn.disabled = false; btn.innerHTML = asal;
   });
 
   /* ====== Hubungi ====== */
